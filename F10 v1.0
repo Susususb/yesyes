@@ -1,0 +1,117 @@
+--[[
+
+Hello!
+
+Do not change any of the script unless you know what you're doing!
+
+F-10 Spawner Made by Sub#6445
+
+]]
+
+game.ReplicatedStorage.GameData.LatestRoom.Changed:Connect(function()
+	local ranum = math.random(1,5) do --Chance 1 in 5 per room
+		if ranum == 1 then
+			local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors%20Entity%20Spawner/Source.lua"))()
+
+
+			-- Create entity
+			local entityTable = Spawner.createEntity({
+				CustomName = "F-10", -- Custom name of your entity
+				Model = "https://github.com/Susususb/yesyes/blob/main/F10v0.5.rbxm?raw=true", -- Can be GitHub file or rbxassetid
+				Speed = 75, -- Percentage, 100 = default Rush speed
+				DelayTime = 3, -- Time before starting cycles (seconds)
+				HeightOffset = 2.5,
+				CanKill = true,
+				KillRange = 100,
+				BackwardsMovement = false,
+				BreakLights = false,
+				FlickerLights = {
+					true, -- Enabled/Disabled
+					2, -- Time (seconds)
+				},
+				Cycles = {
+					Min = 1,
+					Max = math.random(1,2),
+					WaitTime = 4,
+				},
+				CamShake = {
+					true, -- Enabled/Disabled
+					{5.5, 3.0, 0.1, 1}, -- Shake values (don't change if you don't know)
+					10000, -- Shake start distance (from Entity to you)
+				},
+				Jumpscare = {
+					true, -- Enabled/Disabled
+					{
+						Image1 = "rbxassetid://12376701936", -- Image1 url
+						Image2 = "rbxassetid://12376701936", -- Image2 url
+						Shake = true,
+						Sound1 = {
+							9125402735, -- SoundId
+							{ Volume = 5 }, -- Sound properties
+						},
+						Sound2 = {
+							3537873683, -- SoundId
+							{ Volume = 5 }, -- Sound properties
+						},
+						Flashing = {
+							true, -- Enabled/Disabled
+							Color3.fromRGB(255, 255, 255), -- Color
+						},
+						Tease = {
+							true, -- Enabled/Disabled
+							Min = 10,
+							Max = 10,
+						},
+					},
+				},
+				CustomDialog = {"You"}, -- Custom death message
+			})
+
+
+			-- Run the created entity
+			wait(2.5)
+			local ColorC = Instance.new("ColorCorrectionEffect")
+			ColorC.Brightness = 0.1
+			ColorC.Contrast = 0
+			ColorC.Saturation = 0
+			ColorC.TintColor = Color3.new(0.678431, 0, 0)
+			ColorC.Parent = game.Lighting
+			local sound = Instance.new("Sound")
+			sound.SoundId = "rbxassetid://9125713608"
+			sound.Parent = game.Workspace
+			sound.Volume = 3
+			sound.PlaybackSpeed = 0.75
+			local CSE = Instance.new("ChorusSoundEffect")
+			CSE.Depth = 0.15
+			CSE.Mix = 0.5
+			CSE.Priority = 0
+			CSE.Rate = 0.5
+			CSE.Parent = sound
+			local RSE = Instance.new("ReverbSoundEffect")
+			RSE.DecayTime = 1.5
+			RSE.Density = 1
+			RSE.Diffusion = 1
+			RSE.DryLevel = -6
+			RSE.Priority = 0
+			RSE.WetLevel = 0
+			RSE.Parent = sound
+			sound:Play()
+			task.defer(function()
+				wait(12.5)
+				if ColorC then
+					for i = 1,10 do
+						ColorC.Brightness = 0.01
+						wait()
+					end
+					ColorC:Destroy()
+				end
+			end)
+			Spawner.runEntity(entityTable)
+			for i = 1,10 do
+				ColorC.Brightness = 0.01
+				wait()
+			end
+			ColorC:Destroy()
+		end
+	end
+end)
