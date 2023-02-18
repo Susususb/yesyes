@@ -1,4 +1,5 @@
---v.1.73
+
+--v.1.74
 
 --PUBLIC RELEASE v1.01
 
@@ -161,6 +162,27 @@ for i = 1,10 do
 	warn("HARDCORE INITIATED. Good luck!")
 end
 
+local Start = Instance.new("ScreenGui")
+Start.Parent = game.Players.LocalPlayer.PlayerGui
+local Textr = Instance.new("TextLabel")
+Textr.AnchorPoint = Vector2.new(0.5,0.5)
+Textr.Text = "Hardcore initiated. Good luck! (Made by Sub#6445)"
+Textr.BackgroundTransparency = 1
+Textr.Position = UDim2.new(0.5, 0,0.895, 0)
+Textr.Size = UDim2.new(0.5,0,0.895,0)
+Textr.FontFace = Enum.Font.Oswald
+Textr.LineHeight = 1
+Textr.MaxVisibleGraphemes = -1
+Textr.TextColor3 = Color3.fromRGB(255,222,189)
+Textr.TextScaled = true
+Textr.TextStrokeColor3 = Color3.fromRGB(0,0,0)
+Textr.Parent = Start
+
+task.defer(function()
+	wait(4)
+	Start:Destroy()
+end)
+
 local SG = Instance.new("ScreenGui")
 SG.Name = "HardcoreBlinkGui"
 SG.IgnoreGuiInset = true
@@ -169,6 +191,8 @@ local Frame = Instance.new("Frame")
 Frame.Size = UDim2.new(1,0,1,0)
 Frame.BackgroundColor3 = Color3.new(0, 0, 0)
 Frame.Parent = SG
+
+Frame.BackgroundTransparency = 1
 
 local breath = Instance.new("Sound")
 breath.Volume = 0
@@ -423,8 +447,6 @@ function bob(p1, p2)
 	game.SoundService.Main.Volume = 1;
 	l__Jumpscare_A90__3.Visible = false;
 end;
-
-bob(require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game))
 
 local function clear()
 	local crn = math.random(1,3)
