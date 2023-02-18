@@ -1577,7 +1577,7 @@ local function clear()
 					sound:Play()
 					task.defer(function()
 						wait(15.769420)
-						wait(10.5)
+						wait(30.5)
 						for i, v in pairs(game.Workspace:GetDescendants()) do
 							if v.Name == "Blink" then
 								v:Destroy()
