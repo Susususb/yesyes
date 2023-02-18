@@ -161,25 +161,26 @@ for i = 1,10 do
 	print("HARDCORE INITIATED. Good luck!")
 	warn("HARDCORE INITIATED. Good luck!")
 end
-
+local Sos = Instance.new("Sound")
+Sos.SoundId = "rbxassetid://4810729995"
+Sos.Parent = game.Workspace
+Sos:Play()
 local Start = Instance.new("ScreenGui")
 Start.Parent = game.Players.LocalPlayer.PlayerGui
+Start.Name = "GayGui"
 local Textr = Instance.new("TextLabel")
 Textr.AnchorPoint = Vector2.new(0.5,0.5)
 Textr.Text = "Hardcore initiated. Good luck! (Made by Sub#6445)"
 Textr.BackgroundTransparency = 1
-Textr.Position = UDim2.new(0.5, 0,0.895, 0)
-Textr.Size = UDim2.new(0.5,0,0.895,0)
-Textr.FontFace = Enum.Font.Oswald
-Textr.LineHeight = 1
-Textr.MaxVisibleGraphemes = -1
+Textr.Position = UDim2.new(0.5, 0,0.893, 0)
+Textr.Size = UDim2.new(0.749, 0,0.052, 0)
+Textr.Font = Enum.Font.Oswald
 Textr.TextColor3 = Color3.fromRGB(255,222,189)
 Textr.TextScaled = true
-Textr.TextStrokeColor3 = Color3.fromRGB(0,0,0)
 Textr.Parent = Start
 
 task.defer(function()
-	wait(4)
+	wait(10)
 	Start:Destroy()
 end)
 
